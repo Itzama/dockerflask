@@ -1,0 +1,10 @@
+version: '3'
+services:
+  web:
+    build: .
+    # command: flask run --host=0.0.0.0
+    command: gunicorn -b 0.0.0.0:5000 manage:app
+    volumes:
+      - .:/usr/src/app
+    ports:
+      - "5000:5000"
